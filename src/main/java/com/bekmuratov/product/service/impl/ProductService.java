@@ -6,8 +6,12 @@ import com.bekmuratov.product.service.api.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Objects;
 
 @Service
 public class ProductService implements IProductService {
@@ -25,6 +29,7 @@ public class ProductService implements IProductService {
     private String productReviewApiURL;
 
     @Override
+    @Retryable(value = Exception.class, maxAttempts = 2, backoff = @Backoff(delay = 100))
     public ResponseEntity<ProductDto> findProduct(String productId) {
 
         ResponseEntity<ProductDto> pResp = fetchProductData(productId);
@@ -32,9 +37,7 @@ public class ProductService implements IProductService {
         ResponseEntity<ProductReviewDto> pReviewResp = fetchProductReviewData(productId);
 
         if (pReviewResp.getStatusCode() == HttpStatus.OK) {
-            if (pReviewResp.getBody() != null) {
-                pResp.getBody().setProductReview(pReviewResp.getBody());
-            }
+            Objects.requireNonNull(pResp.getBody()).setProductReview(pReviewResp.getBody());
         }
 
         return pResp;
