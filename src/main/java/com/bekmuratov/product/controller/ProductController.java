@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     @Autowired
-    private IProductService reviewService;
+    private IProductService productService;
 
-    @GetMapping("/product/{id}")
-    public ResponseEntity<?> findReviewById(@PathVariable Long id){
-        ProductDto productDto = reviewService.findReviewById(id);
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<?> findProduct(@PathVariable String productId) {
+        ProductDto productDto = productService.findProduct(productId);
         return ResponseEntity.ok(productDto);
     }
 }

@@ -1,11 +1,13 @@
 package com.bekmuratov.product.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductDto implements Serializable {
-    private Long id;
+    private String id;
 
     @JsonProperty("product_type")
     private String productType;
@@ -29,7 +31,7 @@ public class ProductDto implements Serializable {
     private List<Detail> confirmedDynamicBackgroundAssets;
 
     @JsonProperty("attribute_list")
-    private List<Attribute> attributes;
+    private Attribute attributes;
 
     @JsonProperty("pricing_information")
     private Price pricingInformation;
@@ -37,11 +39,11 @@ public class ProductDto implements Serializable {
     @JsonProperty("product_description")
     private ProductDescription productDescription;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -101,11 +103,11 @@ public class ProductDto implements Serializable {
         this.confirmedDynamicBackgroundAssets = confirmedDynamicBackgroundAssets;
     }
 
-    public List<Attribute> getAttributes() {
+    public Attribute getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(List<Attribute> attributes) {
+    public void setAttributes(Attribute attributes) {
         this.attributes = attributes;
     }
 
