@@ -1,5 +1,6 @@
 package com.bekmuratov.product.domain.dto;
 
+import com.bekmuratov.product.domain.dto.review.ProductReviewDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
@@ -38,6 +39,8 @@ public class ProductDto implements Serializable {
 
     @JsonProperty("product_description")
     private ProductDescription productDescription;
+
+    private ProductReviewDto productReview;
 
     public String getId() {
         return id;
@@ -125,5 +128,13 @@ public class ProductDto implements Serializable {
 
     public void setProductDescription(ProductDescription productDescription) {
         this.productDescription = productDescription;
+    }
+
+    public ProductReviewDto getProductReview() {
+        return productReview;
+    }
+
+    public void setProductReview(ProductReviewDto productReview) {
+        this.productReview = productReview;
     }
 }

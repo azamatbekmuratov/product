@@ -5,3 +5,9 @@ spring:
     active: stage
 server:
   port: 8001
+api:
+  public:
+    product: https://www.adidas.co.uk/api/products/
+    host: www.adidas.co.uk
+  review: http://localhost:8000/api/reviews/v1/review/product/
+
