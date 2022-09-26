@@ -1,6 +1,5 @@
 package com.bekmuratov.product.controller;
 
-import com.bekmuratov.product.domain.dto.ProductDto;
 import com.bekmuratov.product.service.api.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,6 @@ public class ProductController {
 
     @GetMapping("/product/{productId}")
     public ResponseEntity<?> findProduct(@PathVariable String productId) {
-        ProductDto productDto = productService.findProduct(productId);
-        return ResponseEntity.ok(productDto);
+        return productService.findProduct(productId);
     }
 }

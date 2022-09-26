@@ -25,7 +25,7 @@ public class ProductService implements IProductService {
     private String productReviewApiURL;
 
     @Override
-    public ProductDto findProduct(String productId) {
+    public ResponseEntity<ProductDto> findProduct(String productId) {
 
         ResponseEntity<ProductDto> pResp = fetchProductData(productId);
 
@@ -37,7 +37,7 @@ public class ProductService implements IProductService {
             }
         }
 
-        return null;
+        return pResp;
 
     }
 
