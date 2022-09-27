@@ -14,5 +14,5 @@ Product service. Fetches data from public API of Adidas and from Review service 
 ## How to run using Makefile
 
 ### Build and Run in docker
-1. Set in application.yml parameter api.review your IP address instead of localhost
+1. Set in application.yml parameter api.review IP address of Review service host instead of localhost
 2. Type in terminal make build-run
