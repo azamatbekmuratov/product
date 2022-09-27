@@ -1,0 +1,9 @@
+version: '3'
+services:
+  product-service:
+    build: .
+    image: product-service:test
+    container_name: product-service
+    restart: on-failure
+    ports:
+      - '8001:8001'
