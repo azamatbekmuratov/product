@@ -17,6 +17,11 @@ Product service. Fetches data from public API of Adidas and from Review service 
 1. Set in application.yml parameter api.review IP address of Review service host instead of localhost
 2. Type in terminal make build-run
 
+## How to run tests using Makefile
+
+1. Review must to be up for this API test
+2. Type in terminal make test
+
 
 ## How to use it
 ### Products with review
